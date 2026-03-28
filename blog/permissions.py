@@ -20,7 +20,7 @@ class IsAdminOrOwner(permissions.BasePermission):
         if request.user and request.user.is_staff:
             return True
 
-        if hasattr(obj, 'author'):
+        if hasattr(obj, "author"):
             return obj.author == request.user
         return obj == request.user
 
@@ -32,6 +32,6 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS:
             return True
 
-        if hasattr(obj, 'author'):
+        if hasattr(obj, "author"):
             return obj.author == request.user
         return obj == request.user
